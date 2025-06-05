@@ -1,6 +1,8 @@
-#include <iostream>
+#include <game_manager.hpp>
 
-int main()
+func main() -> int
 {
-    std::cout << "Welcome to Dungeon Archeology!!!\n\n";
+    std::srand(std::time(nullptr));
+    auto game = GameManager();
+    return 0;
 }

@@ -8,24 +8,28 @@ set(CMAKE_CXX_STANDARD 20)
 
 ## Configure project source and headers
 file(GLOB PROJECT_SRC ${PROJECT_SOURCE_DIR}/src/*)
-file(GLOB PRECOMPILE  ${PROJECT_SOURCE_DIR}/precompile/*)
+file(GLOB SRC_SUBDIR ${PROJECT_SOURCE_DIR}/src/*/*)
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SRC})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SRC} ${SRC_SUBDIR})
 target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include/)
-target_precompile_headers(${PROJECT_NAME} PRIVATE ${PRECOMPILE})
+target_precompile_headers(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/precompile.hpp)
 
 ## Copy files to build
-file(COPY ${PROJECT_SOURCE_DIR}/textures DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/assets DESTINATION ${PROJECT_BINARY_DIR})
 
 ## Add SFML to project
 include(FetchContent)
-FetchContent_Declare(SFML
+FetchContent_Declare(sfml
         GIT_REPOSITORY https://github.com/SFML/SFML.git
-        GIT_TAG 3.0.0 GIT_SHALLOW ON
-        EXCLUDE_FROM_ALL  SYSTEM
+        GIT_TAG 2.6.2
 )
-FetchContent_MakeAvailable(SFML)
-target_link_libraries(
-        ${PROJECT_NAME} PRIVATE
-        SFML::System SFML::Window SFML::Graphics
+FetchContent_MakeAvailable(sfml)
+target_link_libraries(${PROJECT_NAME} PRIVATE sfml-graphics sfml-window sfml-system)
+
+## Add toml++ to project
+FetchContent_Declare(tomlplusplus
+        GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
+        GIT_TAG v3.4.0
 )
+FetchContent_MakeAvailable(tomlplusplus)
+target_link_libraries(${PROJECT_NAME} PRIVATE tomlplusplus::tomlplusplus)

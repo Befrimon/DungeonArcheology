@@ -3,4 +3,5 @@
 
 ## Credits
 Code: [Befrimon](https://github.com/Befrimon)  
-Textures: [Toadzillart](https://toadzillart.itch.io/)
+Textures: [Toadzillart](https://toadzillart.itch.io/)  
+Font: [GGBotNet](https://ggbot.itch.io/)
