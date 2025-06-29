@@ -1,4 +1,3 @@
 .idea/
 build/
-
-*.tar.gz
+debug/
