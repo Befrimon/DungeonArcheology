@@ -15,15 +15,25 @@ target_precompile_headers(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/precompil
 
 ## Copy files to build
 file(COPY ${PROJECT_SOURCE_DIR}/assets DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/locales DESTINATION ${PROJECT_BINARY_DIR})
+
+include(FetchContent)
 
 ## Add SFML to project
-include(FetchContent)
 FetchContent_Declare(sfml
         GIT_REPOSITORY https://github.com/SFML/SFML.git
         GIT_TAG 2.6.2
 )
 FetchContent_MakeAvailable(sfml)
 target_link_libraries(${PROJECT_NAME} PUBLIC sfml-graphics sfml-window sfml-system)
+
+## Add spdlog to project
+FetchContent_Declare(spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_TAG v1.15.3
+)
+FetchContent_MakeAvailable(spdlog)
+target_link_libraries(${PROJECT_NAME} PUBLIC spdlog)
 
 ## Add toml++ to project
 FetchContent_Declare(tomlplusplus

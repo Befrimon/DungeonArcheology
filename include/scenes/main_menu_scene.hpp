@@ -5,6 +5,12 @@
 
 class MainMenuScene final : public Scene
 {
+  sf::Text title_;
+  sf::RectangleShape start_button_;
+  sf::Text start_text_;
+  sf::RectangleShape close_button_;
+  sf::Text close_text_;
+
 public:
   MainMenuScene();
   ~MainMenuScene() override = default;

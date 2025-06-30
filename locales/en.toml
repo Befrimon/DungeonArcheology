@@ -1,0 +1,5 @@
+title = "English"
+
+[main_menu]
+start = "Start Game"
+close = "Close Game"
