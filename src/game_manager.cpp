@@ -1,20 +1,20 @@
 #include "game_manager.hpp"
 
-#include "scene_manager.hpp"
-#include "resource_manager.hpp"
-#include "translation_manager.hpp"
+#include "singletons/scene_manager.hpp"
+#include "singletons/resource_manager.hpp"
+#include "singletons/translation_manager.hpp"
 #include "scenes/main_menu_scene.hpp"
 
 GameManager::GameManager() :
   window_(sf::RenderWindow(sf::VideoMode(800, 600), "Dungeon Archeology"))
 {
   SPDLOG_INFO("Welcome to DungeonArcheology!");
-  ResourceManager::Initialize();
-  TranslationManager::Load("en");
-  SceneManager::GetInstance().ChangeScene(std::make_unique<MainMenuScene>());
+  ResourceManager::getInstance();
+  TranslationManager::getInstance();
+  SceneManager::getInstance()->changeScene(std::make_unique<MainMenuScene>());
 }
 
-void GameManager::Run()
+void GameManager::run()
 {
   while (window_.isOpen())
   {
@@ -23,19 +23,19 @@ void GameManager::Run()
     {
       if (event.type == sf::Event::Closed)
       {
-        SceneManager::GetInstance().ClearScenes();
+        SceneManager::getInstance()->clearScenes();
         window_.close();
         SPDLOG_INFO("Goodbye!");
       }
 
-      SceneManager::GetInstance().HandleEvent(event);
+      SceneManager::getInstance()->handleEvent(event);
     }
 
     float delta_time = clock_.restart().asSeconds();
-    SceneManager::GetInstance().Update(delta_time);
+    SceneManager::getInstance()->update(delta_time);
 
     window_.clear();
-    SceneManager::GetInstance().Render(window_);
+    SceneManager::getInstance()->render(window_);
     window_.display();
   }
 }

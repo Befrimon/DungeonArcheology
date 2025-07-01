@@ -9,7 +9,7 @@ class GameManager final
 public:
   GameManager();
 
-  void Run();
+  void run();
 };
 
 #endif

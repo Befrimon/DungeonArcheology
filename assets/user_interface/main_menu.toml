@@ -1,0 +1,16 @@
+[title]
+text_key = "main_menu::title"
+font_size = 48
+fill_color = {r = 255, g = 255, b = 255}
+position = {x = 400, y = 40}
+
+[start_button]
+fill_color = {r = 0, g = 120, b = 0}
+size = {x = 300, y = 80}
+position = {x = 400, y = 150}
+
+[start_text]
+text_key = "main_menu::start"
+font_size = 28
+fill_color = {r = 255, g = 255, b = 255}
+position = {x = 400, y = 140}

@@ -4,6 +4,6 @@ int main()
 {
   initLogging();
   GameManager main_game{};
-  main_game.Run();
+  main_game.run();
   return 0;
 }

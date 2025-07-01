@@ -15,11 +15,11 @@ public:
   MainMenuScene();
   ~MainMenuScene() override = default;
 
-  void HandleEvent(const sf::Event &event) override;
-  void Update(const float &delta) override;
-  void Render(sf::RenderWindow &window) override;
-  void Enter() override;
-  void Exit() override;
+  void handleEvent(const sf::Event &event) override;
+  void update(const float &delta) override;
+  void render(sf::RenderWindow &window) override;
+  void enter() override;
+  void exit() override;
 };
 
 #endif

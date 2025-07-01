@@ -1,3 +1,34 @@
-//
-// Created by gdev on 01.07.25.
-//
+#include "ui_parser.hpp"
+
+#include "singletons/translation_manager.hpp"
+#include "singletons/resource_manager.hpp"
+
+void UIParser::applyConfig(const toml::table& config, sf::Text& object)
+{
+  object.setFont(ResourceManager::getInstance()->getFont());
+  object.setString(TranslationManager::getInstance()->get(config["text_key"].value_or("")));
+  object.setCharacterSize(config["font_size"].value_or(10));
+  object.setFillColor(sf::Color(
+    config["fill_color"]["r"].value_or(0),
+    config["fill_color"]["g"].value_or(0),
+    config["fill_color"]["b"].value_or(0)));
+  const sf::FloatRect bounds = object.getGlobalBounds();
+  object.setOrigin(static_cast<sf::Vector2f>(sf::Vector2i(
+    static_cast<int>(bounds.width / 2),
+    static_cast<int>(bounds.height / 2))));
+  object.setPosition(sf::Vector2f(config["position"]["x"].value_or(0.f), config["position"]["y"].value_or(0.f)));
+}
+
+void UIParser::applyConfig(const toml::table& config, sf::RectangleShape& object)
+{
+  object.setFillColor(sf::Color(
+    config["fill_color"]["r"].value_or(0),
+    config["fill_color"]["g"].value_or(0),
+    config["fill_color"]["b"].value_or(0)));
+  object.setSize(sf::Vector2f(config["size"]["x"].value_or(0.f), config["size"]["y"].value_or(0.f)));
+  const sf::FloatRect bounds = object.getGlobalBounds();
+  object.setOrigin(static_cast<sf::Vector2f>(sf::Vector2i(
+    static_cast<int>(bounds.width / 2),
+    static_cast<int>(bounds.height / 2))));
+  object.setPosition(sf::Vector2f(config["position"]["x"].value_or(0.f), config["position"]["y"].value_or(0.f)));
+}
