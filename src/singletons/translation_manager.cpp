@@ -1,8 +1,21 @@
-#include "translation_manager.hpp"
+#include "../../include/singletons/translation_manager.hpp"
+#include <locale>
 
-std::unordered_map<std::string, std::string> TranslationManager::locale_;
+TranslationManager::TranslationManager()
+{
+  setlocale(LC_ALL, "");
+  load(setlocale(LC_CTYPE, nullptr));
+}
 
-void TranslationManager::Load(const std::string& lang)
+TranslationManager* TranslationManager::instance;
+TranslationManager* TranslationManager::getInstance()
+{
+  if (instance == nullptr)
+    instance = new TranslationManager();
+  return instance;
+}
+
+void TranslationManager::load(const std::string& lang)
 {
   toml::table data;
   try {
@@ -32,7 +45,7 @@ void TranslationManager::Load(const std::string& lang)
   SPDLOG_INFO("Loaded locale: " + locale_["title"]);
 }
 
-std::string TranslationManager::Get(const std::string& key)
+std::string TranslationManager::get(const std::string& key)
 {
   if (locale_.contains(key))
     return locale_[key];
