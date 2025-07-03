@@ -9,7 +9,7 @@ position = { x = 400, y = 40 }
 texture_key = "ui_elements::button_1"
 tile_size = { x = 8, y = 8 }
 size = { x = 80, y = 30 }
-position = { x = 400, y = 150 }
+position = { x = 200, y = 180 }
 scale = { x = 4, y = 4 }
 
 [start_text]  # sf::Text
@@ -17,4 +17,32 @@ text_key = "main_menu::start"
 font_key = "default"
 char_size = 28
 fill_color = { r = 255, g = 255, b = 255 }
-position = { x = 400, y = 140 }
+position = { x = 200, y = 170 }
+
+[huh_button]  # SliceSprite
+texture_key = "ui_elements::button_1"
+tile_size = { x = 8, y = 8 }
+size = { x = 80, y = 30 }
+position = { x = 200, y = 310 }
+scale = { x = 4, y = 4 }
+
+[huh_text]  # sf::Text
+text_key = "main_menu::huh"
+font_key = "default"
+char_size = 28
+fill_color = { r = 255, g = 255, b = 255 }
+position = { x = 200, y = 300 }
+
+[close_button]  # SliceSprite
+texture_key = "ui_elements::button_1"
+tile_size = { x = 8, y = 8 }
+size = { x = 80, y = 30 }
+position = { x = 200, y = 440 }
+scale = { x = 4, y = 4 }
+
+[close_text]  # sf::Text
+text_key = "main_menu::close"
+font_key = "default"
+char_size = 28
+fill_color = { r = 255, g = 255, b = 255 }
+position = { x = 200, y = 430 }

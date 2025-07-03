@@ -4,4 +4,5 @@ null = "<Not Found>"
 [main_menu]
 title = "Dungeon Archeology"
 start = "Start Game"
+huh = "Huuuuh?"
 close = "Close Game"

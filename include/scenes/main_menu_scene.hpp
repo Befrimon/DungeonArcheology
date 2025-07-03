@@ -9,6 +9,10 @@ class MainMenuScene final : public Scene
   sf::Text title_;
   SliceSprite start_button_;
   sf::Text start_text_;
+  SliceSprite huh_button_;
+  sf::Text huh_text_;
+  SliceSprite close_button_;
+  sf::Text close_text_;
 
 public:
   MainMenuScene();

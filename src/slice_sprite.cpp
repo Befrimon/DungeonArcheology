@@ -74,7 +74,8 @@ void SliceSprite::setSize(const sf::Vector2f &size)
 
 sf::FloatRect SliceSprite::getGlobalBounds() const
 {
-  return sf::FloatRect(getPosition(), size_);
+  const sf::Vector2f real_size{ size_.x * getScale().x, size_.y * getScale().y };
+  return sf::FloatRect(getPosition().x - real_size.x/2, getPosition().y - real_size.y/2, real_size.x, real_size.y);
 }
 
 void SliceSprite::draw(sf::RenderTarget &target, sf::RenderStates states) const

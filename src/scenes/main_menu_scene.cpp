@@ -24,17 +24,36 @@ MainMenuScene::MainMenuScene()
   UIParser::applyConfig(*data["title"].as_table(), title_);
   UIParser::applyConfig(*data["start_button"].as_table(), start_button_);
   UIParser::applyConfig(*data["start_text"].as_table(), start_text_);
+  UIParser::applyConfig(*data["huh_button"].as_table(), huh_button_);
+  UIParser::applyConfig(*data["huh_text"].as_table(), huh_text_);
+  UIParser::applyConfig(*data["close_button"].as_table(), close_button_);
+  UIParser::applyConfig(*data["close_text"].as_table(), close_text_);
 
   SPDLOG_INFO("MainMenu scene initialized");
 }
 
-void MainMenuScene::handleEvent(const sf::Event &event) {}
+void MainMenuScene::handleEvent(const sf::Event &event)
+{
+  if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+  {
+    if (start_button_.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+      SPDLOG_INFO("START!!!");
+    if (start_button_.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+      SPDLOG_INFO("HUH!!!");
+    if (start_button_.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+      SPDLOG_INFO("CLOSE!!!");
+  }
+}
 void MainMenuScene::update(const float &delta) {}
 void MainMenuScene::render(sf::RenderWindow &window)
 {
   window.draw(title_);
   window.draw(start_button_);
   window.draw(start_text_);
+  window.draw(huh_button_);
+  window.draw(huh_text_);
+  window.draw(close_button_);
+  window.draw(close_text_);
 }
 
 void MainMenuScene::enter()
