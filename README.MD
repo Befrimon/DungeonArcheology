@@ -10,5 +10,5 @@ Dungeon Archeology
 
 # Credits
 Code: [Befrimon Reminodal](https://github.com/Befrimon)  
-Textures: Huh?  
-Font: Huh?
+Textures: [Toadzillart](https://toadzillart.itch.io/)  
+Font: [GGBotNet](https://www.ggbot.net/)
